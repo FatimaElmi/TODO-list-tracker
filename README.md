@@ -40,8 +40,41 @@ Manage tasks efficiently: create, edit, delete, and track progress.
 
 ## Team Workflow
 - **main**: Stable branch  
-- **dev**: Development branch  
+- **dev**: Development branch
+  
+## Using the dev Branch
 
+1. Clone the repository (if not done already):
+```
+bash
+ git clone https://github.com/FatimaElmi/TODO-list-tracker.git
+cd TODO-list-tracker
+```
+2. Switch to the dev branch:
+   ``` bash
+   git checkout dev
+```
+3. Work on features or fixes
+* Open the project in Visual Studio
+* Make your changes (add tasks, edit code, etc.)
+
+4. Stage and commit changes:
+```bash
+git add .
+git commit -m "Brief description of your changes"
+```
+5. Push changes to the remote dev branch:
+```bash
+git push
+```
+6. Pull latest updates before starting new work:
+```bash
+git pull origin dev
+```
+7. Merge dev into main via Pull Request
+* Go to GitHub → Pull Requests → New Pull Request
+* Base branch: main, Compare branch: dev
+* Review, create PR, and merge when approved
 
  Each team member should:
 1. Commit and push changes
