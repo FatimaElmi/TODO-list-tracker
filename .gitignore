@@ -24,3 +24,11 @@ packages/
 # Logs
 [Ll]og/
 [Ll]ogs/
+
+
+# Additional obj / build cache
+*.AssemblyInfoInputs.cache
+*.assets.cache
+project.assets.json
+project.nuget.cache
+*.fsproj.nuget.dgspec.json
