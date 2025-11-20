@@ -1,0 +1,26 @@
+# Build output
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Assembly info
+*.AssemblyInfo.cs
+*.AssemblyInfo.fs
+
+# Cache / temp files
+*.cache.json
+
+# NuGet packages
+*.nupkg
+*.snupkg
+packages/
+
+# Logs
+[Ll]og/
+[Ll]ogs/
