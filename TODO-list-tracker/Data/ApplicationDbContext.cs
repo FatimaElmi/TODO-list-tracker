@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using TODO_list_tracker.Models;
 
 namespace TODO_list_tracker.Data
 {
@@ -9,5 +10,8 @@ namespace TODO_list_tracker.Data
             : base(options)
         {
         }
+
+
+        public DbSet<Note> Notes { get; set; }
     }
 }

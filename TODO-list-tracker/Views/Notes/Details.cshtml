@@ -1,0 +1,17 @@
+﻿@model TODO_list_tracker.Models.Note
+
+@{
+    ViewData["Title"] = "Note Details";
+}
+
+<h2>Note Details</h2>
+
+<div>
+    <h4>@Model.Title</h4>
+    <p>@Model.Description</p>
+</div>
+
+<p>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
+    <a asp-action="Index" class="btn btn-secondary">Back to Dashboard</a>
+</p>
