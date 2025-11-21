@@ -5,9 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using TODO_list_tracker.Data;
 using TODO_list_tracker.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace TODO_list_tracker.Controllers
 {
+    [Authorize]
     public class NotesController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -50,6 +52,8 @@ namespace TODO_list_tracker.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+        // GET: Notes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
@@ -58,28 +62,30 @@ namespace TODO_list_tracker.Controllers
             var note = await _context.Notes.FirstOrDefaultAsync(n => n.Id == id && n.UserId == userId);
 
             if (note == null) return NotFound();
+
             return View(note);
         }
 
+        // POST: Notes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description")] Note note)
+        public async Task<IActionResult> Edit(int id, [Bind("Title,Description")] Note note)
         {
             var userId = _userManager.GetUserId(User);
+
             var existingNote = await _context.Notes.FirstOrDefaultAsync(n => n.Id == id && n.UserId == userId);
+
             if (existingNote == null) return NotFound();
 
-            if (ModelState.IsValid)
-            {
-                existingNote.Title = note.Title;
-                existingNote.Description = note.Description;
-                _context.Update(existingNote);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(note);
-        }
+            // Update only the fields from the form
+            existingNote.Title = note.Title;
+            existingNote.Description = note.Description;
 
+            // Save changes
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return NotFound();
